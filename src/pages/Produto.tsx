@@ -245,9 +245,10 @@ const Produto = () => {
     setCurrentImage((prev) => (prev === 0 ? product.images.length - 1 : prev - 1));
   };
 
-  // Verificar se produto tem modelo 3D (campo futuro)
-  const has3DModel = !!(product as any).modelo3dUrl;
-  const hasAR = !!(product as any).arEnabled;
+  // Verificar se produto tem modelo 3D
+  const has3DModel = !!(product as any).modelo_3d_url;
+  const hasAR = !!(product as any).ar_enabled;
+  const model3DUrl = (product as any).modelo_3d_url || '';
 
   return (
     <div className="min-h-screen bg-background pb-24 lg:pb-0">
@@ -353,10 +354,10 @@ const Produto = () => {
             </div>
             
             {/* Botão AR (quando disponível) */}
-            {hasAR && (
+            {hasAR && model3DUrl && (
               <a
                 rel="ar"
-                href={(product as any).modelo3dUrl}
+                href={model3DUrl}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-foreground text-background rounded-lg hover:bg-foreground/80 transition-colors"
               >
                 <Smartphone className="w-5 h-5" />
@@ -699,11 +700,11 @@ const Produto = () => {
             </DialogTitle>
           </DialogHeader>
           <div className="flex-1 h-full min-h-[400px] bg-gradient-to-b from-secondary to-background rounded-lg overflow-hidden flex items-center justify-center">
-            {has3DModel ? (
+            {has3DModel && model3DUrl ? (
               <Modal3DViewer
                 isOpen={true}
                 onClose={() => setShow3DModal(false)}
-                modelUrl={(product as any).modelo3dUrl}
+                modelUrl={model3DUrl}
                 productName={product?.name || ''}
               />
             ) : (

@@ -190,11 +190,7 @@ function criarProduto() {
     $sku = $input['sku'] ?? 'SKU' . time();
     
     // Inserir produto
-    $stmt = $conexao->prepare("INSERT INTO produtos 
-        (sku, nome, slug, descricao, descricao_curta, categoria_id, modelo, condicao, condicao_descricao, 
-         preco, preco_original, desconto_percentual, estoque, garantia_meses, tela, camera, chip, destaque, parcelas, ativo)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    
+    // Campos do produto
     $ativo = isset($input['ativo']) ? ($input['ativo'] ? 1 : 0) : 1;
     $destaque = isset($input['destaque']) ? ($input['destaque'] ? 1 : 0) : 0;
     $categoriaId = !empty($input['categoria_id']) ? intval($input['categoria_id']) : null;
@@ -212,11 +208,18 @@ function criarProduto() {
     $camera = $input['camera'] ?? null;
     $chip = $input['chip'] ?? null;
     $parcelas = !empty($input['parcelas']) ? intval($input['parcelas']) : 12;
+    $modelo3dUrl = $input['modelo_3d_url'] ?? null;
+    $arEnabled = isset($input['ar_enabled']) ? ($input['ar_enabled'] ? 1 : 0) : 0;
+
+    $stmt = $conexao->prepare("INSERT INTO produtos 
+        (sku, nome, slug, descricao, descricao_curta, categoria_id, modelo, condicao, condicao_descricao, 
+         preco, preco_original, desconto_percentual, estoque, garantia_meses, tela, camera, chip, destaque, parcelas, ativo, modelo_3d_url, ar_enabled)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     
-    $stmt->bind_param("sssssisssddiiisssiis", 
+    $stmt->bind_param("sssssisssddiiisssiiisi", 
         $sku, $input['nome'], $slug, $descricao, $descricaoCurta, $categoriaId,
         $modelo, $condicao, $condicaoDescricao, $preco, $precoOriginal, $desconto,
-        $estoque, $garantia, $tela, $camera, $chip, $destaque, $parcelas, $ativo
+        $estoque, $garantia, $tela, $camera, $chip, $destaque, $parcelas, $ativo, $modelo3dUrl, $arEnabled
     );
     
     if (!$stmt->execute()) {
@@ -317,6 +320,8 @@ function atualizarProduto($id) {
     if (isset($input['destaque'])) { $campos[] = "destaque = ?"; $valores[] = $input['destaque'] ? 1 : 0; $tipos .= "i"; }
     if (isset($input['parcelas'])) { $campos[] = "parcelas = ?"; $valores[] = intval($input['parcelas']); $tipos .= "i"; }
     if (isset($input['ativo'])) { $campos[] = "ativo = ?"; $valores[] = $input['ativo'] ? 1 : 0; $tipos .= "i"; }
+    if (isset($input['modelo_3d_url'])) { $campos[] = "modelo_3d_url = ?"; $valores[] = $input['modelo_3d_url']; $tipos .= "s"; }
+    if (isset($input['ar_enabled'])) { $campos[] = "ar_enabled = ?"; $valores[] = $input['ar_enabled'] ? 1 : 0; $tipos .= "i"; }
     
     if (count($campos) > 0) {
         $sql = "UPDATE produtos SET " . implode(", ", $campos) . " WHERE id = ?";

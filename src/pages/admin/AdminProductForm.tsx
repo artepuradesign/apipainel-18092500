@@ -20,7 +20,7 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { ArrowLeft, Save, Package, Plus, Trash2, Loader2, ImagePlus, GripVertical, Palette, HardDrive } from "lucide-react";
+import { ArrowLeft, Save, Package, Plus, Trash2, Loader2, ImagePlus, GripVertical, Palette, HardDrive, Box, Eye } from "lucide-react";
 import { toast } from "sonner";
 import {
   fetchAdminProduct,
@@ -31,6 +31,7 @@ import {
 } from "@/services/adminApi";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Modal3DViewer from "@/components/Modal3DViewer";
 
 interface ImageInput {
   id?: number;
@@ -257,6 +258,8 @@ const AdminProductForm = () => {
     chip: "",
     destaque: false,
     ativo: true,
+    modelo_3d_url: "",
+    ar_enabled: false,
   });
 
   // Lista de cores e capacidades disponíveis (dinâmicas)
@@ -273,6 +276,7 @@ const AdminProductForm = () => {
   const [newColor, setNewColor] = useState({ name: "", code: "#000000" });
   const [newCapacity, setNewCapacity] = useState("");
   const [newDisplaySpec, setNewDisplaySpec] = useState("");
+  const [show3DPreview, setShow3DPreview] = useState(false);
 
   // Seleção de cores e capacidades (checkboxes)
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
@@ -384,6 +388,8 @@ const AdminProductForm = () => {
         chip: product.chip || "",
         destaque: product.destaque || false,
         ativo: product.ativo !== false,
+        modelo_3d_url: (product as any).modelo_3d_url || "",
+        ar_enabled: (product as any).ar_enabled || false,
       });
 
       if (product.imagens && product.imagens.length > 0) {
@@ -606,6 +612,8 @@ const AdminProductForm = () => {
         chip: formData.chip,
         destaque: formData.destaque,
         ativo: formData.ativo,
+        modelo_3d_url: formData.modelo_3d_url || null,
+        ar_enabled: formData.ar_enabled,
         imagens: validImages.map((img) => img.url),
         especificacoes: validSpecs,
         variacoes: validVariations,
@@ -1120,6 +1128,64 @@ const AdminProductForm = () => {
               </CardContent>
             </Card>
 
+            {/* Visualização 3D */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Box className="w-5 h-5" />
+                  Visualização 3D (Opcional)
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="modelo_3d_url">URL do Modelo 3D (.glb ou .gltf)</Label>
+                  <div className="flex gap-2">
+                    <Input
+                      id="modelo_3d_url"
+                      value={formData.modelo_3d_url}
+                      onChange={(e) => handleChange("modelo_3d_url", e.target.value)}
+                      placeholder="https://exemplo.com/modelo.glb"
+                      className="flex-1"
+                    />
+                    {formData.modelo_3d_url && (
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={() => setShow3DPreview(true)}
+                      >
+                        <Eye className="w-4 h-4 mr-2" />
+                        Testar
+                      </Button>
+                    )}
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Formatos aceitos: GLB (recomendado) ou GLTF
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Switch
+                    id="ar_enabled"
+                    checked={formData.ar_enabled}
+                    onCheckedChange={(checked) => handleChange("ar_enabled", checked)}
+                    disabled={!formData.modelo_3d_url}
+                  />
+                  <Label htmlFor="ar_enabled" className={!formData.modelo_3d_url ? "text-muted-foreground" : ""}>
+                    Habilitar Realidade Aumentada (AR)
+                  </Label>
+                </div>
+
+                <div className="p-4 bg-muted/50 rounded-lg space-y-2">
+                  <p className="text-sm font-medium">Onde obter modelos 3D gratuitos:</p>
+                  <ul className="text-sm text-muted-foreground space-y-1">
+                    <li>• <a href="https://sketchfab.com/tags/iphone" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Sketchfab</a> - Busque por "iPhone" e baixe em formato GLB</li>
+                    <li>• Após baixar, hospede o arquivo em um servidor ou CDN</li>
+                    <li>• Cole a URL pública do arquivo no campo acima</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Imagens */}
             <Card>
               <CardHeader className="flex flex-row items-center justify-between">
@@ -1318,6 +1384,16 @@ const AdminProductForm = () => {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Modal: Preview 3D */}
+      {formData.modelo_3d_url && (
+        <Modal3DViewer
+          isOpen={show3DPreview}
+          onClose={() => setShow3DPreview(false)}
+          modelUrl={formData.modelo_3d_url}
+          productName={formData.nome || "Preview do Produto"}
+        />
+      )}
 
       <Footer />
     </div>

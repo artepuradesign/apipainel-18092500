@@ -25,6 +25,8 @@ export interface AdminProduct {
   chip?: string;
   destaque: boolean;
   ativo: boolean;
+  modelo_3d_url?: string;
+  ar_enabled?: boolean;
   imagens: { id?: number; url: string; ordem: number; principal: boolean }[];
   especificacoes: { id?: number; label: string; valor: string }[];
   variacoes?: { id?: number; cor: string; cor_codigo: string; capacidade: string; estoque: number; preco: number }[];
