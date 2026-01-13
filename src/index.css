@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 13%;
+
+    --primary: 145 63% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 0 0% 13%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 145 63% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 145 63% 42%;
+
+    --radius: 0.5rem;
+
+    /* Custom iPlace colors */
+    --iplace-green: 145 63% 42%;
+    --iplace-dark: 0 0% 13%;
+    --iplace-gray: 0 0% 96%;
+    --iplace-gray-dark: 0 0% 45%;
+    --price-old: 0 0% 60%;
+    --price-new: 145 63% 35%;
+    --tag-bg: 145 63% 42%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 13%;
+    --sidebar-primary: 145 63% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 96%;
+    --sidebar-accent-foreground: 0 0% 13%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 145 63% 42%;
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 145 63% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 145 63% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 145 63% 42%;
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 145 63% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 145 63% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+@layer components {
+  .filter-chip {
+    @apply px-4 py-2 rounded-full border border-border bg-background text-sm font-medium text-foreground
+           hover:border-foreground hover:text-foreground transition-all cursor-pointer;
+  }
+
+  .filter-chip-active {
+    @apply bg-foreground text-background border-foreground;
+  }
+
+  .product-card {
+    @apply bg-card rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer;
+  }
+
+  .price-old {
+    @apply text-muted-foreground line-through text-sm;
+  }
+
+  .price-new {
+    @apply text-foreground font-bold text-lg;
+  }
+
+  .price-installment {
+    @apply text-muted-foreground text-xs;
+  }
+
+  .tag-seminovo {
+    @apply bg-primary text-primary-foreground text-xs font-medium px-2 py-1 rounded;
+  }
+
+  .filter-section {
+    @apply border-b border-border pb-4 mb-4;
+  }
+
+  .filter-title {
+    @apply font-semibold text-sm mb-3 text-foreground;
+  }
+
+  .filter-option {
+    @apply flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground cursor-pointer py-1;
+  }
+
+  .guarantee-badge {
+    @apply flex items-center gap-2 text-sm text-muted-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

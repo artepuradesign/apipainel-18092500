@@ -1,0 +1,283 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "iPhone 12 Pro Max 128GB",
+      "color": "Azul Pacífico",
+      "capacity": "128GB",
+      "category": "iPhone",
+      "condition": "Excelente",
+      "oldPrice": 4116.47,
+      "newPrice": 2699.00,
+      "installments": 12,
+      "rating": 4,
+      "reviews": 15,
+      "images": [
+        "https://images.unsplash.com/photo-1592286927505-1def25115558?w=500&h=500&fit=crop",
+        "https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500&h=500&fit=crop",
+        "https://images.unsplash.com/photo-1632661674596-df8be59a8713?w=500&h=500&fit=crop"
+      ],
+      "description": "iPhone 12 Pro Max em excelente condição. Revisado e testado por especialistas Apple. Acompanha cabo USB-C e garantia de 12 meses.",
+      "specs": [
+        { "label": "Capacidade", "value": "128GB" },
+        { "label": "Cor", "value": "Azul Pacífico" },
+        { "label": "Condição", "value": "Excelente" },
+        { "label": "Garantia", "value": "12 meses" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "iPhone 13 Pro 256GB",
+      "color": "Grafite",
+      "capacity": "256GB",
+      "category": "iPhone",
+      "condition": "Bom",
+      "oldPrice": 5299.00,
+      "newPrice": 3499.00,
+      "installments": 12,
+      "rating": 5,
+      "reviews": 23,
+      "images": [
+        "https://images.unsplash.com/photo-1591337676887-a217a6970a8a?w=500&h=500&fit=crop",
+        "https://images.unsplash.com/photo-1592286927505-1def25115558?w=500&h=500&fit=crop"
+      ],
+      "description": "iPhone 13 Pro com tela Super Retina XDR e sistema de câmeras profissional.",
+      "specs": [
+        { "label": "Capacidade", "value": "256GB" },
+        { "label": "Cor", "value": "Grafite" },
+        { "label": "Condição", "value": "Bom" },
+        { "label": "Garantia", "value": "12 meses" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "iPhone 14 Pro Max 512GB",
+      "color": "Roxo Profundo",
+      "capacity": "512GB",
+      "category": "iPhone",
+      "condition": "Excelente",
+      "oldPrice": 8999.00,
+      "newPrice": 5999.00,
+      "installments": 12,
+      "rating": 5,
+      "reviews": 45,
+      "images": [
+        "https://images.unsplash.com/photo-1678652197831-2d180705cd2c?w=500&h=500&fit=crop"
+      ],
+      "description": "iPhone 14 Pro Max com Dynamic Island, câmera de 48MP e chip A16 Bionic.",
+      "specs": [
+        { "label": "Capacidade", "value": "512GB" },
+        { "label": "Cor", "value": "Roxo Profundo" },
+        { "label": "Condição", "value": "Excelente" },
+        { "label": "Garantia", "value": "12 meses" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "MacBook Pro 14\" M3 Pro",
+      "color": "Cinza Espacial",
+      "capacity": "512GB",
+      "category": "Mac",
+      "condition": "Excelente",
+      "oldPrice": 18999.00,
+      "newPrice": 14999.00,
+      "installments": 12,
+      "rating": 5,
+      "reviews": 32,
+      "images": [
+        "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&h=500&fit=crop"
+      ],
+      "description": "MacBook Pro 14 polegadas com chip M3 Pro, 18GB de memória e SSD de 512GB.",
+      "specs": [
+        { "label": "Capacidade", "value": "512GB SSD" },
+        { "label": "Cor", "value": "Cinza Espacial" },
+        { "label": "Memória", "value": "18GB" },
+        { "label": "Garantia", "value": "12 meses" }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "iPad Pro 12.9\" M2",
+      "color": "Prateado",
+      "capacity": "256GB",
+      "category": "iPad",
+      "condition": "Bom",
+      "oldPrice": 10499.00,
+      "newPrice": 7499.00,
+      "installments": 12,
+      "rating": 4,
+      "reviews": 18,
+      "images": [
+        "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&h=500&fit=crop"
+      ],
+      "description": "iPad Pro 12.9 polegadas com chip M2 e tela Liquid Retina XDR.",
+      "specs": [
+        { "label": "Capacidade", "value": "256GB" },
+        { "label": "Cor", "value": "Prateado" },
+        { "label": "Tela", "value": "12.9\"" },
+        { "label": "Garantia", "value": "12 meses" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Apple Watch Ultra 2",
+      "color": "Titânio Natural",
+      "capacity": "64GB",
+      "category": "Apple Watch",
+      "condition": "Excelente",
+      "oldPrice": 7999.00,
+      "newPrice": 5499.00,
+      "installments": 12,
+      "rating": 5,
+      "reviews": 28,
+      "images": [
+        "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500&h=500&fit=crop"
+      ],
+      "description": "Apple Watch Ultra 2 com GPS + Celular, caixa de titânio de 49mm.",
+      "specs": [
+        { "label": "Tamanho", "value": "49mm" },
+        { "label": "Cor", "value": "Titânio Natural" },
+        { "label": "GPS", "value": "GPS + Cellular" },
+        { "label": "Garantia", "value": "12 meses" }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "iPhone 11 64GB",
+      "color": "Preto",
+      "capacity": "64GB",
+      "category": "iPhone",
+      "condition": "Bom",
+      "oldPrice": 2499.00,
+      "newPrice": 1599.00,
+      "installments": 12,
+      "rating": 4,
+      "reviews": 42,
+      "images": [
+        "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=500&h=500&fit=crop"
+      ],
+      "description": "iPhone 11 com câmera dupla e bateria de longa duração.",
+      "specs": [
+        { "label": "Capacidade", "value": "64GB" },
+        { "label": "Cor", "value": "Preto" },
+        { "label": "Condição", "value": "Bom" },
+        { "label": "Garantia", "value": "12 meses" }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "MacBook Air M2",
+      "color": "Meia-Noite",
+      "capacity": "256GB",
+      "category": "Mac",
+      "condition": "Excelente",
+      "oldPrice": 12999.00,
+      "newPrice": 9499.00,
+      "installments": 12,
+      "rating": 5,
+      "reviews": 55,
+      "images": [
+        "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=500&h=500&fit=crop"
+      ],
+      "description": "MacBook Air 13 polegadas com chip M2, leve e potente.",
+      "specs": [
+        { "label": "Capacidade", "value": "256GB SSD" },
+        { "label": "Cor", "value": "Meia-Noite" },
+        { "label": "Memória", "value": "8GB" },
+        { "label": "Garantia", "value": "12 meses" }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "iPad Air 5ª Geração",
+      "color": "Azul",
+      "capacity": "64GB",
+      "category": "iPad",
+      "condition": "Bom",
+      "oldPrice": 5499.00,
+      "newPrice": 3999.00,
+      "installments": 12,
+      "rating": 4,
+      "reviews": 21,
+      "images": [
+        "https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=500&h=500&fit=crop"
+      ],
+      "description": "iPad Air com chip M1 e compatível com Apple Pencil de 2ª geração.",
+      "specs": [
+        { "label": "Capacidade", "value": "64GB" },
+        { "label": "Cor", "value": "Azul" },
+        { "label": "Tela", "value": "10.9\"" },
+        { "label": "Garantia", "value": "12 meses" }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Apple Watch Series 9 45mm",
+      "color": "Estelar",
+      "capacity": "64GB",
+      "category": "Apple Watch",
+      "condition": "Excelente",
+      "oldPrice": 4499.00,
+      "newPrice": 3299.00,
+      "installments": 12,
+      "rating": 5,
+      "reviews": 34,
+      "images": [
+        "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=500&h=500&fit=crop"
+      ],
+      "description": "Apple Watch Series 9 com chip S9 SiP e tela sempre ativa.",
+      "specs": [
+        { "label": "Tamanho", "value": "45mm" },
+        { "label": "Cor", "value": "Estelar" },
+        { "label": "GPS", "value": "GPS" },
+        { "label": "Garantia", "value": "12 meses" }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "iPhone 15 Pro 256GB",
+      "color": "Titânio Natural",
+      "capacity": "256GB",
+      "category": "iPhone",
+      "condition": "Excelente",
+      "oldPrice": 8999.00,
+      "newPrice": 6999.00,
+      "installments": 12,
+      "rating": 5,
+      "reviews": 67,
+      "images": [
+        "https://images.unsplash.com/photo-1696446701796-da61225697cc?w=500&h=500&fit=crop"
+      ],
+      "description": "iPhone 15 Pro com chip A17 Pro, botão de ação e câmera de 48MP.",
+      "specs": [
+        { "label": "Capacidade", "value": "256GB" },
+        { "label": "Cor", "value": "Titânio Natural" },
+        { "label": "Condição", "value": "Excelente" },
+        { "label": "Garantia", "value": "12 meses" }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Carregador MagSafe Apple",
+      "color": "Branco",
+      "capacity": "",
+      "category": "Acessórios",
+      "condition": "Novo",
+      "oldPrice": 399.00,
+      "newPrice": 299.00,
+      "installments": 3,
+      "rating": 5,
+      "reviews": 89,
+      "images": [
+        "https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?w=500&h=500&fit=crop"
+      ],
+      "description": "Carregador MagSafe oficial Apple para iPhone 12 e posteriores.",
+      "specs": [
+        { "label": "Compatibilidade", "value": "iPhone 12+" },
+        { "label": "Potência", "value": "15W" },
+        { "label": "Cor", "value": "Branco" },
+        { "label": "Garantia", "value": "12 meses" }
+      ]
+    }
+  ]
+}
