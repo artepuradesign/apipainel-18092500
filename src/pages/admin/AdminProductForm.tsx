@@ -31,7 +31,7 @@ import {
 } from "@/services/adminApi";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Modal3DViewer from "@/components/Modal3DViewer";
+import Modal3DViewer from "@/components/Modal3DViewerV2";
 
 interface ImageInput {
   id?: number;
