@@ -102,15 +102,15 @@ export default function Modal3DViewerV2({ isOpen, onClose, modelUrl, productName
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl h-[80vh]">
-        <DialogHeader>
+      <DialogContent className="max-w-4xl h-[80vh] flex flex-col">
+        <DialogHeader className="flex-shrink-0">
           <DialogTitle className="flex items-center gap-2">
             <span>{productName}</span>
             <span className="text-muted-foreground text-sm font-normal">- Visualização 3D</span>
           </DialogTitle>
         </DialogHeader>
 
-        <div className="relative flex-1 h-full min-h-[400px] bg-gradient-to-b from-secondary to-background rounded-lg overflow-hidden">
+        <div className="relative flex-1 min-h-0 bg-gradient-to-b from-secondary to-background rounded-lg overflow-hidden">
           {error ? (
             <div className="w-full h-full flex flex-col items-center justify-center gap-4 p-6">
               <AlertCircle className="w-12 h-12 text-destructive" />
@@ -133,29 +133,35 @@ export default function Modal3DViewerV2({ isOpen, onClose, modelUrl, productName
               )}
 
               {localUrl && (
-                <Canvas key={localUrl} camera={{ position: [0, 0, zoom], fov: 50 }}>
-                  <Suspense fallback={null}>
-                    <Stage environment="city" intensity={0.5}>
-                      <Model url={localUrl} />
-                    </Stage>
-                    <OrbitControls
-                      ref={controlsRef}
-                      autoRotate
-                      autoRotateSpeed={2}
-                      enableZoom
-                      enablePan
-                      minDistance={2}
-                      maxDistance={10}
-                    />
-                    <Environment preset="city" />
-                  </Suspense>
-                </Canvas>
+                <div className="absolute inset-0">
+                  <Canvas 
+                    key={localUrl} 
+                    camera={{ position: [0, 0, zoom], fov: 50 }}
+                    style={{ width: '100%', height: '100%' }}
+                  >
+                    <Suspense fallback={null}>
+                      <Stage environment="city" intensity={0.5}>
+                        <Model url={localUrl} />
+                      </Stage>
+                      <OrbitControls
+                        ref={controlsRef}
+                        autoRotate
+                        autoRotateSpeed={2}
+                        enableZoom
+                        enablePan
+                        minDistance={2}
+                        maxDistance={10}
+                      />
+                      <Environment preset="city" />
+                    </Suspense>
+                  </Canvas>
+                </div>
               )}
             </>
           )}
 
           {!error && !isPreparing && localUrl && (
-            <div className="absolute bottom-4 right-4 flex gap-2">
+            <div className="absolute bottom-4 right-4 flex gap-2 z-20">
               <Button
                 size="icon"
                 variant="secondary"
@@ -187,7 +193,7 @@ export default function Modal3DViewerV2({ isOpen, onClose, modelUrl, productName
           )}
         </div>
 
-        <p className="text-sm text-muted-foreground text-center">
+        <p className="text-sm text-muted-foreground text-center flex-shrink-0 pt-2">
           Arraste para girar • Scroll para zoom • Segure Shift + arraste para mover
         </p>
       </DialogContent>
