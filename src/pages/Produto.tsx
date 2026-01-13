@@ -13,7 +13,7 @@ import { toast } from "sonner";
 import { decodeProductHash, isProductHash } from "@/lib/productHash";
 import { generateProductSpecs } from "@/lib/iphoneSpecs";
 import BestSellers from "@/components/BestSellers";
-import Modal3DViewer from "@/components/Modal3DViewer";
+import Modal3DViewer from "@/components/Modal3DViewerV2";
 import { QRCodeSVG } from "qrcode.react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
@@ -691,23 +691,23 @@ const Produto = () => {
       </Dialog>
 
       {/* Modal Visualização 3D */}
-      <Dialog open={show3DModal} onOpenChange={setShow3DModal}>
-        <DialogContent className="max-w-4xl h-[80vh]">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              <Box className="w-5 h-5" />
-              Visualização 3D - {product?.name}
-            </DialogTitle>
-          </DialogHeader>
-          <div className="flex-1 h-full min-h-[400px] bg-gradient-to-b from-secondary to-background rounded-lg overflow-hidden flex items-center justify-center">
-            {has3DModel && model3DUrl ? (
-              <Modal3DViewer
-                isOpen={true}
-                onClose={() => setShow3DModal(false)}
-                modelUrl={model3DUrl}
-                productName={product?.name || ''}
-              />
-            ) : (
+      {has3DModel && model3DUrl ? (
+        <Modal3DViewer
+          isOpen={show3DModal}
+          onClose={() => setShow3DModal(false)}
+          modelUrl={model3DUrl}
+          productName={product?.name || ""}
+        />
+      ) : (
+        <Dialog open={show3DModal} onOpenChange={setShow3DModal}>
+          <DialogContent className="max-w-4xl h-[80vh]">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <Box className="w-5 h-5" />
+                Visualização 3D - {product?.name}
+              </DialogTitle>
+            </DialogHeader>
+            <div className="flex-1 h-full min-h-[400px] bg-gradient-to-b from-secondary to-background rounded-lg overflow-hidden flex items-center justify-center">
               <div className="text-center p-8">
                 <Box className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
                 <h3 className="text-lg font-semibold mb-2">Modelo 3D em breve</h3>
@@ -716,13 +716,11 @@ const Produto = () => {
                   Com ela você poderá girar, ampliar e ver o produto de todos os ângulos.
                 </p>
               </div>
-            )}
-          </div>
-          <p className="text-sm text-muted-foreground text-center">
-            {has3DModel ? 'Arraste para girar • Scroll para zoom • Segure Shift + arraste para mover' : 'Recurso em desenvolvimento'}
-          </p>
-        </DialogContent>
-      </Dialog>
+            </div>
+            <p className="text-sm text-muted-foreground text-center">Recurso em desenvolvimento</p>
+          </DialogContent>
+        </Dialog>
+      )}
 
       <Footer />
       <WhatsAppButton />
